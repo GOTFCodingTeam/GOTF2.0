@@ -29,7 +29,7 @@ public class Tile_Component : MonoBehaviour
         //find adjacent active spaces to move to, set active to false in spaces.
         foreach (RectTransform adjacent in adjacents)
         {
-            if(adjacent.GetComponent<Tile_Component>().active == true && GetComponent<Tile_Component>().unit == null)
+            if(adjacent.GetComponent<Tile_Component>().active == true && GetComponent<Tile_Component>().unit == null && adjacent.GetComponent<Tile_Component>().unit != null)
             {
                 //move unit
                 adjacent.GetComponent<Tile_Component>().unit.GetComponent<BaseUnit_Component>().Move(adjacent.GetComponent<RectTransform>(), GetComponent<RectTransform>());           

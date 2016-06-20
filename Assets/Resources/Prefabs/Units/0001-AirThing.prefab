@@ -30,11 +30,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  health: 0
+  health: 5
   baseAttack: 5
-  attack: 0
+  attack: 5
   baseCountdown: 1
-  countdown: 0
+  countdown: 1
   effects: {fileID: 0}
 --- !u!114 &11436368
 MonoBehaviour:

@@ -25,10 +25,9 @@ public class HandCard_Component : MonoBehaviour {
             {
                 if(tile.GetComponent<Tile_Component>().active)
                 {
-                    GameObject card = Instantiate(gameObject.GetComponent<CardDictionary>().cardNumsToName[cardID]);
-                    card.transform.SetParent(tile.transform, false);
 
-                    tile.GetComponent<Tile_Component>().unit = card.GetComponent<RectTransform>();
+                    Transform card = gameObject.GetComponent<CardDictionary>().cardNumsToName[cardID].GetComponent<BaseUnit_Component>().Summon(tile.GetComponent<RectTransform>());
+
                     tile.GetComponent<Tile_Component>().active = false;
                     canPlay = false;
 
