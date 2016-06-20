@@ -4,6 +4,7 @@ using System.Collections;
 
 public class BaseUnit_Component : MonoBehaviour
 {
+
     public int maxHealth;
     public int health;
 
@@ -20,9 +21,7 @@ public class BaseUnit_Component : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-        countdown = baseCountdown;
-        attack = baseAttack;
-        health = maxHealth;
+
 	}
 	
 	// Update is called once per frame
@@ -30,16 +29,32 @@ public class BaseUnit_Component : MonoBehaviour
 	
 	}
 
-    //move unit from previous tile to the next tile.
+    //summons a creature
+    public void Summon(RectTransform tile)
+    {
+        Transform thisGuy = Instantiate<Transform>(this.transform);
+        tile.GetComponent<Tile_Component>().unit = thisGuy.GetComponent<RectTransform>();
+        thisGuy.transform.SetParent(tile, false);
+
+        health = maxHealth;
+        attack = baseAttack;
+        countdown = baseCountdown;
+    }
+
+    
+    //move unit from previous tile to the next tile.Actually creates instance with the exact same qualities.
     public void Move(RectTransform previousTile, RectTransform tileTo)
     {
+        Transform thisGuy = Instantiate<Transform>(this.transform);
+
         //set unit components
-        tileTo.GetComponent<Tile_Component>().unit = GetComponent<RectTransform>();
+        tileTo.GetComponent<Tile_Component>().unit = thisGuy.GetComponent<RectTransform>();
         previousTile.GetComponent<Tile_Component>().unit = null;
 
-        //set sprite components
-        previousTile.GetComponent<Image>().sprite = null;
-        tileTo.GetComponent<Image>().sprite = GetComponent<Image>().sprite;
+
+        thisGuy.transform.SetParent(tileTo, false);
+
+        DestroyImmediate(gameObject, true);
 
     }
 }
