@@ -9,6 +9,7 @@ public class HandCard_Component : MonoBehaviour {
     GameObject[] placeableTiles;
 
     public bool canPlay = false;
+    public bool played = false;
 
 	// Use this for initialization
 	void Start () {
@@ -16,8 +17,9 @@ public class HandCard_Component : MonoBehaviour {
         placeableTiles = GameObject.FindGameObjectsWithTag("side1tile");
 	}
 	
-	// Update is called once per frame
+	// Updates card's image if it's drawn, and gives it the option to be played.
 	void Update () {
+        GetComponent<Image>().sprite = GetComponent<CardDictionary>().cardNumsToName[cardID].GetComponent<Image>().sprite;
         if(canPlay)
         {
             foreach(GameObject tile in placeableTiles)
@@ -29,6 +31,8 @@ public class HandCard_Component : MonoBehaviour {
                     tile.GetComponent<Tile_Component>().unit = card.GetComponent<RectTransform>();
                     tile.GetComponent<Tile_Component>().active = false;
                     canPlay = false;
+
+                    played = true;
                 }
             }
         }
@@ -38,9 +42,13 @@ public class HandCard_Component : MonoBehaviour {
     public void OnClick()
     {
         canPlay = true;
-        if(canPlay)
+        foreach (GameObject tile in placeableTiles)
         {
-            ;
+            if (tile.GetComponent<Tile_Component>().active)
+            {
+                tile.GetComponent<Tile_Component>().active = false;
+            }
         }
+
     }
 }
