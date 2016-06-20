@@ -13,7 +13,6 @@ public class Column_Component : MonoBehaviour
     void Start ()
     {
         remainingHealth = startHealth;
-	
 	}
 	
 	// Update is called once per frame

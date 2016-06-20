@@ -9,33 +9,30 @@ public class Hand_Component : MonoBehaviour
 
     public GameObject cardButton;
 
-	// Use this for initialization
+	// Fill hand. This would happen at the start of the game.
 	void Start ()
     {
         cards = new ArrayList();
         buttons = new ArrayList();
-        cards.Add(0001);
-        cards.Add(0000);
-
-        int x = 0;
-        foreach(int card in cards)
-        {
-            //GetComponent<CardDictionary>().cardNumsToName[card]
-            GameObject handSlot = Instantiate(cardButton);
-            handSlot.GetComponent<HandCard_Component>().cardID = card;
-            handSlot.transform.SetParent(transform);
-            handSlot.GetComponent<RectTransform>().position = new Vector3(125 * x + 50, 50, 0);
-            buttons.Add(handSlot);
-
-            x++;
-
-        }
+        AddCard(0000);
+        AddCard(0001);
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    //adds card with specific id to player's hand.
+    public void AddCard(int card)
     {
-        int x = 0;
+        cards.Add(card);
+
+        GameObject handSlot = Instantiate(cardButton);
+        handSlot.GetComponent<HandCard_Component>().cardID = card;
+        handSlot.transform.SetParent(transform);
+        handSlot.GetComponent<RectTransform>().position = new Vector3(125 * buttons.Count + 50, 50, 0);
+        buttons.Add(handSlot);
+    }
+
+    // Remove all cards that are played.
+    void Update ()
+    {
         foreach(GameObject slot in buttons)
         {
             if(slot.GetComponent<HandCard_Component>().played)
@@ -48,8 +45,6 @@ public class Hand_Component : MonoBehaviour
 
                 break;
             }
-            x++;
         }
-
     }
 }

@@ -11,9 +11,8 @@ public class HandCard_Component : MonoBehaviour {
     public bool canPlay = false;
     public bool played = false;
 
-	// Use this for initialization
+	// Get all possible tiles.
 	void Start () {
-
         placeableTiles = GameObject.FindGameObjectsWithTag("side1tile");
 	}
 	
@@ -28,6 +27,7 @@ public class HandCard_Component : MonoBehaviour {
                 {
                     GameObject card = Instantiate(gameObject.GetComponent<CardDictionary>().cardNumsToName[cardID]);
                     card.transform.SetParent(tile.transform, false);
+
                     tile.GetComponent<Tile_Component>().unit = card.GetComponent<RectTransform>();
                     tile.GetComponent<Tile_Component>().active = false;
                     canPlay = false;
@@ -39,16 +39,22 @@ public class HandCard_Component : MonoBehaviour {
 	
 	}
 
+    //first click to set up movement.
     public void OnClick()
     {
+        if(canPlay)
+        {
+            canPlay = false;
+            return;
+        }
+
         canPlay = true;
         foreach (GameObject tile in placeableTiles)
         {
             if (tile.GetComponent<Tile_Component>().active)
             {
-                tile.GetComponent<Tile_Component>().active = false;
+                tile.GetComponent<Tile_Component>().active = false;//so card isn't placed on already active squares.
             }
         }
-
     }
 }
