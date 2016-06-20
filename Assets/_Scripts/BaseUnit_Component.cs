@@ -55,6 +55,5 @@ public class BaseUnit_Component : MonoBehaviour
         thisGuy.transform.SetParent(tileTo, false);
 
         DestroyImmediate(gameObject, true);
-
     }
 }
