@@ -4,6 +4,7 @@ using System.Collections;
 
 public class BaseUnit_Component : MonoBehaviour
 {
+    public string cost;
 
     public int maxHealth;
     public int health;
