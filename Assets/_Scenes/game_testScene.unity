@@ -402,7 +402,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 518692247}
   m_Layer: 5
-  m_Name: EarthResource (2)
+  m_Name: WaterResource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -676,6 +676,80 @@ RectTransform:
   m_AnchoredPosition: {x: 376, y: 0}
   m_SizeDelta: {x: 251, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &908740164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 908740165}
+  - 222: {fileID: 908740167}
+  - 114: {fileID: 908740166}
+  m_Layer: 5
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &908740165
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 908740164}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 997778285}
+  m_RootOrder: 3
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 875, y: 0}
+  m_SizeDelta: {x: 244, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &908740166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 908740164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 85
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 8
+    m_MaxSize: 85
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 14/21
+--- !u!222 &908740167
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 908740164}
 --- !u!1 &997778284
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,12 +781,13 @@ RectTransform:
   - {fileID: 2044586125}
   - {fileID: 872293177}
   - {fileID: 518692247}
+  - {fileID: 908740165}
   m_Father: {fileID: 1856180397}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 108.25, y: 0}
-  m_SizeDelta: {x: 875.5, y: 100}
+  m_AnchoredPosition: {x: -45.5, y: 490}
+  m_SizeDelta: {x: 1001, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &997778286
 MonoBehaviour:
@@ -726,7 +801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6544118, g: 0.6544118, b: 0.6544118, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1030,6 +1105,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25da65b8272a89641840a5885cbabc19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  earth: 4
+  vortex: 4
+  water: 4
+  neutral: 12
+  maxEarth: 4
+  maxVortex: 4
+  maxWater: 4
+  maxNeutral: 12
+  earthBox: {fileID: 488546446}
+  vortexBox: {fileID: 123867137}
+  waterBox: {fileID: 1050361794}
+  neutralBox: {fileID: 908740166}
 --- !u!1 &2000388699
 GameObject:
   m_ObjectHideFlags: 0

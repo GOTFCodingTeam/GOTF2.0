@@ -4,6 +4,11 @@ using System.Collections;
 
 public class BaseUnit_Component : MonoBehaviour
 {
+    //for cost: resource letter, value, resource letter, value
+    //e = earth
+    //v = void/vortex
+    //w = water
+    //u = uncolored.
     public string cost;
 
     public int maxHealth;

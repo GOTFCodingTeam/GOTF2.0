@@ -23,20 +23,33 @@ public class HandCard_Component : MonoBehaviour {
         {
             foreach(GameObject tile in placeableTiles)
             {
-                if(tile.GetComponent<Tile_Component>().active)
-                {
-
-                    Transform card = gameObject.GetComponent<CardDictionary>().cardNumsToName[cardID].GetComponent<BaseUnit_Component>().Summon(tile.GetComponent<RectTransform>());
-
-                    tile.GetComponent<Tile_Component>().active = false;
-                    canPlay = false;
-
-                    played = true;
-                }
+                bool playedCard = PlayCard(tile);
             }
-        }
-	
+        }	
 	}
+
+    //play card, return true if it's played.
+    public bool PlayCard(GameObject tileToPlace)
+    {
+        if (!tileToPlace.GetComponent<Tile_Component>().active)
+            return false;
+
+        //check cost of card to play.
+        if(GetComponentInParent<ResourceManager>().CanPlay(GetComponent<CardDictionary>().cardNumsToName[cardID].GetComponent<BaseUnit_Component>().cost))
+        {
+            //spend resources then summon card.
+            GetComponentInParent<ResourceManager>().SpendResources(GetComponent<CardDictionary>().cardNumsToName[cardID].GetComponent<BaseUnit_Component>().cost);
+            Transform card = gameObject.GetComponent<CardDictionary>().cardNumsToName[cardID].GetComponent<BaseUnit_Component>().Summon(tileToPlace.GetComponent<RectTransform>());
+
+            tileToPlace.GetComponent<Tile_Component>().active = false;
+            canPlay = false;
+
+            played = true;
+            return true;
+        }
+        return false;
+    }
+
 
     //first click to set up movement.
     public void OnClick()
