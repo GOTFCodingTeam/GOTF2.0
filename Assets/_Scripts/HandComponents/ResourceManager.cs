@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Networking;
 using System;
 
-public class ResourceManager : MonoBehaviour
+public class ResourceManager : NetworkBehaviour
 {
     public int earth;
     public int vortex;
@@ -38,7 +39,10 @@ public class ResourceManager : MonoBehaviour
     //check if player can play
     public bool CanPlay(string input)
     {
-        for(int x = 0; x < input.Length / 2; x++)
+        if (!localPlayerAuthority)
+            return false;
+
+        for (int x = 0; x < input.Length / 2; x++)
         {
             switch (input.ToCharArray()[x * 2])
             {
@@ -73,6 +77,9 @@ public class ResourceManager : MonoBehaviour
     //spends resources
     public void SpendResources(string input)
     {
+        if (!localPlayerAuthority)
+            return;
+
         for (int x = 0; x < input.Length / 2; x++)
         {
             switch (input.ToCharArray()[x * 2])
@@ -97,6 +104,9 @@ public class ResourceManager : MonoBehaviour
 
     public void AddResources(string input)
     {
+        if (!localPlayerAuthority)
+            return;
+
         for (int x = 0; x < input.Length / 2; x++)
         {
             switch (input.ToCharArray()[x * 2])

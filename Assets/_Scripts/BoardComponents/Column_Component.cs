@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class Column_Component : MonoBehaviour
+public class Column_Component : NetworkBehaviour
 {
     //all tiles in one column
     public RectTransform[] tiles;

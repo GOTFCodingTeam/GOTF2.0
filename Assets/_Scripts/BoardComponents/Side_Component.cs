@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class Side_Component : MonoBehaviour
+public class Side_Component : NetworkBehaviour
 {
     public RectTransform[] columns;
 

@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 using System.Collections;
 
-public class HandCard_Component : MonoBehaviour {
+public class HandCard_Component : NetworkBehaviour {
     public int cardID;
     public Image card;
 
@@ -19,6 +20,8 @@ public class HandCard_Component : MonoBehaviour {
 	
 	// Updates card's image if it's drawn, and gives it the option to be played.
 	void Update () {
+        if (!localPlayerAuthority)
+            return;
         GetComponent<Image>().sprite = GetComponent<CardDictionary>().cardNumsToName[cardID].GetComponent<Image>().sprite;
         if(canPlay)
         {
@@ -31,6 +34,8 @@ public class HandCard_Component : MonoBehaviour {
 
     //play card, return true if it's played.
     public bool PlayCard(GameObject tileToPlace) {
+        if (!localPlayerAuthority)
+            return false;
         if (!tileToPlace.GetComponent<Tile_Component>().active)
             return false;
 
@@ -53,7 +58,10 @@ public class HandCard_Component : MonoBehaviour {
 
     //first click to set up movement.
     public void OnClick() {
-        if(canPlay)
+        if (!localPlayerAuthority)
+            return;
+
+        if (canPlay)
         {
             canPlay = false;
             return;
