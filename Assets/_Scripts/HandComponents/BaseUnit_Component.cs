@@ -2,14 +2,13 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class BaseUnit_Component : MonoBehaviour
+public class BaseUnit_Component : BaseCard
 {
     //for cost: resource letter, value, resource letter, value
     //e = earth
     //v = void/vortex
     //w = water
     //u = uncolored.
-    public string cost;
 
     public int maxHealth;
     public int health;
@@ -20,11 +19,15 @@ public class BaseUnit_Component : MonoBehaviour
     public int baseCountdown;
     public int countdown;
 
+    public Text countdownText;
+    public Text attackText;
+    public Text healthText;
+
     //ability effects.
     public Transform effects;
 
     //summons a creature
-    public Transform Summon(RectTransform tile)
+    public override Transform Summon(RectTransform tile, Transform hand)
     {
         Transform thisGuy = Instantiate(transform);
         tile.GetComponent<Tile_Component>().unit = thisGuy.GetComponent<RectTransform>();
@@ -50,5 +53,21 @@ public class BaseUnit_Component : MonoBehaviour
         thisGuy.transform.SetParent(tileTo, false);
 
         DestroyImmediate(gameObject, true);
+    }
+
+    void Update()
+    {
+        healthText.text = "" + health;
+        countdownText.text = "" + countdown;
+        attackText.text = "" + attack;
+    }
+
+    public void TakeDamage( int damageAmount)
+    {
+        health -= damageAmount;
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -16,6 +16,7 @@ public class Hand_Component : MonoBehaviour
         buttons = new ArrayList();
         AddCard(0000);
         AddCard(0001);
+        AddCard(0003);
     }
 
     //adds card with specific id to player's hand.

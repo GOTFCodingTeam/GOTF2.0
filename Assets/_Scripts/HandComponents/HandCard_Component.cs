@@ -14,7 +14,8 @@ public class HandCard_Component : MonoBehaviour {
 	// Get all possible tiles.
 	void Start () {
         placeableTiles = GameObject.FindGameObjectsWithTag("side1tile");
-	}
+
+    }
 	
 	// Updates card's image if it's drawn, and gives it the option to be played.
 	void Update () {
@@ -23,23 +24,22 @@ public class HandCard_Component : MonoBehaviour {
         {
             foreach(GameObject tile in placeableTiles)
             {
-                bool playedCard = PlayCard(tile);
+                PlayCard(tile);
             }
         }	
 	}
 
     //play card, return true if it's played.
-    public bool PlayCard(GameObject tileToPlace)
-    {
+    public bool PlayCard(GameObject tileToPlace) {
         if (!tileToPlace.GetComponent<Tile_Component>().active)
             return false;
 
         //check cost of card to play.
-        if(GetComponentInParent<ResourceManager>().CanPlay(GetComponent<CardDictionary>().cardNumsToName[cardID].GetComponent<BaseUnit_Component>().cost))
+        if(GetComponentInParent<ResourceManager>().CanPlay(GetComponent<CardDictionary>().cardNumsToName[cardID].GetComponent<BaseCard>().cost))
         {
             //spend resources then summon card.
-            GetComponentInParent<ResourceManager>().SpendResources(GetComponent<CardDictionary>().cardNumsToName[cardID].GetComponent<BaseUnit_Component>().cost);
-            Transform card = gameObject.GetComponent<CardDictionary>().cardNumsToName[cardID].GetComponent<BaseUnit_Component>().Summon(tileToPlace.GetComponent<RectTransform>());
+            GetComponentInParent<ResourceManager>().SpendResources(GetComponent<CardDictionary>().cardNumsToName[cardID].GetComponent<BaseCard>().cost);
+            gameObject.GetComponent<CardDictionary>().cardNumsToName[cardID].GetComponent<BaseCard>().Summon(tileToPlace.GetComponent<RectTransform>(), transform.parent);
 
             tileToPlace.GetComponent<Tile_Component>().active = false;
             canPlay = false;
@@ -52,8 +52,7 @@ public class HandCard_Component : MonoBehaviour {
 
 
     //first click to set up movement.
-    public void OnClick()
-    {
+    public void OnClick() {
         if(canPlay)
         {
             canPlay = false;

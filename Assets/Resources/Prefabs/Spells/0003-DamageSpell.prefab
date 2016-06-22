@@ -61,14 +61,26 @@ GameObject:
   - 224: {fileID: 22454274}
   - 222: {fileID: 22214096}
   - 114: {fileID: 11436368}
-  - 114: {fileID: 11431814}
+  - 114: {fileID: 11401640}
   m_Layer: 5
-  m_Name: 0000-MountainUnit
+  m_Name: 0003-DamageSpell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &11401640
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f52cbd36a57972e4e8ba435b7b3d432c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: u3
 --- !u!114 &11414772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,28 +149,6 @@ MonoBehaviour:
   m_Text: '5
 
 '
---- !u!114 &11431814
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 198954}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a646a18080a8c9e41b6084e9e1007e06, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cost: v1e1u2
-  maxHealth: 5
-  health: 0
-  baseAttack: 5
-  attack: 0
-  baseCountdown: 1
-  countdown: 0
-  countdownText: {fileID: 11414772}
-  attackText: {fileID: 11422322}
-  healthText: {fileID: 11439556}
-  effects: {fileID: 0}
 --- !u!114 &11436368
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,7 +168,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 30366e023890e3d4ab85533917c4e0e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb5a9bf1a0277bc4b9987acb3c00c49a, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

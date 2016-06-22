@@ -94,4 +94,28 @@ public class ResourceManager : MonoBehaviour
         }
         UpdateCounts();
     }
+
+    public void AddResources(string input)
+    {
+        for (int x = 0; x < input.Length / 2; x++)
+        {
+            switch (input.ToCharArray()[x * 2])
+            {
+                //element type, then get the next character and compare value.
+                case 'e':
+                    earth += int.Parse(input.ToCharArray()[x * 2 + 1].ToString());
+                    break;
+                case 'v':
+                    vortex += int.Parse(input.ToCharArray()[x * 2 + 1].ToString());
+                    break;
+                case 'w':
+                    water += int.Parse(input.ToCharArray()[x * 2 + 1].ToString());
+                    break;
+                case 'u':
+                    neutral += int.Parse(input.ToCharArray()[x * 2 + 1].ToString());
+                    break;
+            }
+        }
+        UpdateCounts();
+    }
 }

@@ -8,8 +8,9 @@ public class CardDictionary : MonoBehaviour
     // add all cards to dictionary.
     void Start ()
     {
-         cardNumsToName = new Dictionary<int, GameObject>();
-         cardNumsToName.Add(0000, (GameObject)Resources.Load("Prefabs/Units/0000-MountainUnit"));
-         cardNumsToName.Add(0001, (GameObject)Resources.Load("Prefabs/Units/0001-AirThing"));
+        cardNumsToName = new Dictionary<int, GameObject>();
+        cardNumsToName.Add(0000, (GameObject)Resources.Load("Prefabs/Units/0000-MountainUnit"));
+        cardNumsToName.Add(0001, (GameObject)Resources.Load("Prefabs/Units/0001-AirThing"));
+        cardNumsToName.Add(0003, (GameObject)Resources.Load("Prefabs/Spells/0003-DamageSpell"));
     }
 }
