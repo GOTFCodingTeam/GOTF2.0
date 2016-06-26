@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.Collections;
 
-public class Tile_Component : NetworkBehaviour
+public class Tile_Component : MonoBehaviour
 {
     //adjacent tiles
     public RectTransform[] adjacents;
@@ -20,9 +20,6 @@ public class Tile_Component : NetworkBehaviour
     //when button component of image is clicked.
     public void OnClick()
     {
-        if (!localPlayerAuthority)
-            return;
-
         //if you click on yourself, it's not active.
         if (active == true)
         {

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Networking;
 
-public class Hand_Component : NetworkBehaviour
+public class Hand_Component : MonoBehaviour
 {
     ArrayList cards;
     ArrayList buttons;
@@ -23,8 +23,6 @@ public class Hand_Component : NetworkBehaviour
     //adds card with specific id to player's hand.
     public void AddCard(int card)
     {
-        if (!localPlayerAuthority)
-            return;
         cards.Add(card);
 
         GameObject handSlot = Instantiate(cardButton);
@@ -37,8 +35,6 @@ public class Hand_Component : NetworkBehaviour
     // Remove all cards that are played.
     void Update ()
     {
-        if (!localPlayerAuthority)
-            return;
         foreach (GameObject slot in buttons)
         {
             if(slot.GetComponent<HandCard_Component>().played)

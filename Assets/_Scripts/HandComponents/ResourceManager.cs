@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine.Networking;
 using System;
 
-public class ResourceManager : NetworkBehaviour
+public class ResourceManager : MonoBehaviour
 {
     public int earth;
     public int vortex;
@@ -39,8 +39,6 @@ public class ResourceManager : NetworkBehaviour
     //check if player can play
     public bool CanPlay(string input)
     {
-        if (!localPlayerAuthority)
-            return false;
 
         for (int x = 0; x < input.Length / 2; x++)
         {
@@ -77,8 +75,6 @@ public class ResourceManager : NetworkBehaviour
     //spends resources
     public void SpendResources(string input)
     {
-        if (!localPlayerAuthority)
-            return;
 
         for (int x = 0; x < input.Length / 2; x++)
         {
@@ -104,8 +100,6 @@ public class ResourceManager : NetworkBehaviour
 
     public void AddResources(string input)
     {
-        if (!localPlayerAuthority)
-            return;
 
         for (int x = 0; x < input.Length / 2; x++)
         {
